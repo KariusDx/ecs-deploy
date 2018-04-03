@@ -110,10 +110,6 @@ do
             AWS_DEFAULT_REGION="$2"
             shift # past argument
             ;;
-        -p|--profile)
-            AWS_PROFILE="$2"
-            shift # past argument
-            ;;
         --aws-instance-profile)
             echo "--aws-instance-profile is not yet in use"
             AWS_IAM_ROLE=true
@@ -176,11 +172,6 @@ if [ -z ${AWS_DEFAULT_REGION+x} ];
   then unset AWS_DEFAULT_REGION
   else
           AWS_ECS="$AWS_ECS --region $AWS_DEFAULT_REGION"
-fi
-if [ -z ${AWS_PROFILE+x} ];
-  then unset AWS_PROFILE
-  else
-          AWS_ECS="$AWS_ECS --profile $AWS_PROFILE"
 fi
 
 if [ $VERBOSE == true ]; then
